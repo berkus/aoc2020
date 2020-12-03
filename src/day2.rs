@@ -1,7 +1,7 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day2, part1)]
-pub fn input_generator_1(input: &str) -> i32 {
+#[aoc(day2, part1)]
+pub fn part1(input: &str) -> i32 {
     let mut total_good = 0;
     input
         .lines()
@@ -26,8 +26,8 @@ pub fn input_generator_1(input: &str) -> i32 {
     total_good
 }
 
-#[aoc_generator(day2, part2)]
-pub fn input_generator_2(input: &str) -> i32 {
+#[aoc(day2, part2)]
+pub fn part2(input: &str) -> i32 {
     let mut total_good = 0;
     input
         .lines()
@@ -54,25 +54,15 @@ pub fn input_generator_2(input: &str) -> i32 {
     total_good
 }
 
-#[aoc(day2, part1)]
-pub fn part1(input: &i32) -> i32 {
-    *input
-}
-
-#[aoc(day2, part2)]
-pub fn part2(input: &i32) -> i32 {
-    *input
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn sample1() {
-        assert_eq!(input_generator_1("1-2 a: aaa"), 0);
-        assert_eq!(input_generator_1("1-2 a: aa"), 1);
-        assert_eq!(input_generator_1("2-3 a: a"), 0);
+        assert_eq!(part1("1-2 a: aaa"), 0);
+        assert_eq!(part1("1-2 a: aa"), 1);
+        assert_eq!(part1("2-3 a: a"), 0);
     }
 
     // 1-3 a: abcde is valid: position 1 contains a and position 3 does not.
@@ -80,8 +70,8 @@ mod tests {
     // 2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
     #[test]
     fn sample2() {
-        assert_eq!(input_generator_2("1-3 a: abcde"), 1);
-        assert_eq!(input_generator_2("1-3 b: cdefg"), 0);
-        assert_eq!(input_generator_2("2-9 c: ccccccccc"), 0);
+        assert_eq!(part2("1-3 a: abcde"), 1);
+        assert_eq!(part2("1-3 b: cdefg"), 0);
+        assert_eq!(part2("2-9 c: ccccccccc"), 0);
     }
 }

@@ -1,7 +1,7 @@
-use aoc_runner_derive::{aoc, aoc_generator};
+use aoc_runner_derive::aoc;
 
-#[aoc_generator(day1, part1)]
-pub fn input_generator_1(input: &str) -> Vec<i32> {
+#[aoc(day1, part1)]
+pub fn part1(input: &str) -> i32 {
     let mut memory = vec![];
     let mut output = vec![];
     input
@@ -16,17 +16,13 @@ pub fn input_generator_1(input: &str) -> Vec<i32> {
             memory.push(target); // we found x, now we need 2020 - x somewhere
         })
         .for_each(drop);
-    output
+
+    assert_eq!(output.len(), 2);
+    output[0] * output[1]
 }
 
-#[aoc(day1, part1)]
-pub fn part1(input: &[i32]) -> i32 {
-    assert_eq!(input.len(), 2);
-    input[0] * input[1]
-}
-
-#[aoc_generator(day1, part2)]
-pub fn input_generator_2(input: &str) -> Vec<i32> {
+#[aoc(day1, part2)]
+pub fn part2(input: &str) -> i32 {
     use std::collections::HashSet;
     let mut partial_sums = HashSet::new();
     let mut output = HashSet::new();
@@ -45,11 +41,7 @@ pub fn input_generator_2(input: &str) -> Vec<i32> {
         })
         .for_each(drop);
 
-    output.iter().copied().collect::<Vec<i32>>()
-}
-
-#[aoc(day1, part2)]
-pub fn part2(input: &[i32]) -> i32 {
-    assert_eq!(input.len(), 3);
-    input[0] * input[1] * input[2]
+    let output = output.iter().copied().collect::<Vec<i32>>();
+    assert_eq!(output.len(), 3);
+    output[0] * output[1] * output[2]
 }
